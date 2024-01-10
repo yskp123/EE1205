@@ -1,0 +1,87 @@
+% \iffalse
+\let\negmedspace\undefined
+\let\negthickspace\undefined
+\documentclass[journal,12pt,twocolumn]{IEEEtran}
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{txfonts}
+\usepackage{listings}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{gensymb}
+\usepackage{comment}
+\usepackage[breaklinks=true]{hyperref}
+\usepackage{tkz-euclide} 
+\usepackage{listings}
+\usepackage{gvv}                                        
+\def\inputGnumericTable{}                                 
+\usepackage[latin1]{inputenc}                                
+\usepackage{color}                                            
+\usepackage{array}                                            
+\usepackage{longtable}                                       
+\usepackage{calc}                                             
+\usepackage{multirow}                                         
+\usepackage{hhline}                                           
+\usepackage{ifthen}                                           
+\usepackage{lscape}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{problem}{Problem}
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{example}{Example}[section]
+\newtheorem{definition}[problem]{Definition}
+\newcommand{\BEQA}{\begin{eqnarray}}
+\newcommand{\EEQA}{\end{eqnarray}}
+\newcommand{\define}{\stackrel{\triangle}{=}}
+\theoremstyle{remark}
+\newtheorem{rem}{Remark}
+\begin{document}
+
+\bibliographystyle{IEEEtran}
+\vspace{3cm}
+
+\title{NCERT 11.9.3.Q10}
+\author{EE23BTECH11224 - Sri Krishna Prabhas Yadla$^{*}$% <-this % stops a space
+}
+\maketitle
+\newpage
+\bigskip
+
+\renewcommand{\thefigure}{\theenumi}
+\renewcommand{\thetable}{\theenumi}
+
+
+\vspace{3cm}
+\textbf{Question:} Find the sum to indicated number of terms in the geometric progression \(x^3,x^5,x^7,...n\) terms (if \(x\neq\pm1\)).
+\\
+\solution
+% \fi
+Let $S(n)$ be the sum of the first n terms in G.P starting from $x(0)$. We have
+\begin{align}
+    x(n) &= x(0) \cdot r^n \\
+    S(n) &= \sum_{k=0}^{n-1}x(k) \\
+    &= x(0) \frac{r^n-1}{r-1} \text{    (for r$\neq$1)}
+\end{align}
+\begin{table}[h]
+    \input{tables/inputs_table}
+    \label{tab:table1}
+    \caption{Given Inputs}
+\end{table}
+\newline
+Hence the common ratio, $r$, can be calculated by
+\begin{align}
+    r &= \frac{x(1)}{x(0)} \\
+    &= \frac{x^5}{x^3} = x^2 
+\end{align}
+Since $x\neq\pm1$, $r\neq1$,
+\begin{align}
+    S(n) &= x(0) \frac{r^n-1}{r-1} \\
+   \therefore S(n) &= x^3 \frac{x^{2n}-1}{x^2-1}
+\end{align}
+\end{document}

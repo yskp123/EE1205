@@ -1,0 +1,118 @@
+% \iffalse
+\let\negmedspace\undefined
+\let\negthickspace\undefined
+\documentclass[journal,12pt,twocolumn]{IEEEtran}
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{txfonts}
+\usepackage{listings}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{gensymb}
+\usepackage{comment}
+\usepackage[breaklinks=true]{hyperref}
+\usepackage{tkz-euclide} 
+\usepackage{listings}
+\usepackage{gvv}                                        
+\def\inputGnumericTable{}                                 
+\usepackage[latin1]{inputenc}                                
+\usepackage{color}                                            
+\usepackage{array}                                            
+\usepackage{longtable}                                       
+\usepackage{calc}                                             
+\usepackage{multirow}                                         
+\usepackage{hhline}                                           
+\usepackage{ifthen}                                           
+\usepackage{lscape}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{problem}{Problem}
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{example}{Example}[section]
+\newtheorem{definition}[problem]{Definition}
+\newcommand{\BEQA}{\begin{eqnarray}}
+\newcommand{\EEQA}{\end{eqnarray}}
+\newcommand{\define}{\stackrel{\triangle}{=}}
+\theoremstyle{remark}
+\newtheorem{rem}{Remark}
+\begin{document}
+
+\bibliographystyle{IEEEtran}
+\vspace{3cm}
+
+\title{GATE: EE - 49.2022}
+\author{EE23BTECH11224 - Sri Krishna Prabhas Yadla$^{*}$% <-this % stops a space
+}
+\maketitle
+\newpage
+\bigskip
+
+\renewcommand{\thefigure}{\arabic{figure}}
+\renewcommand{\thetable}{\arabic{table}}
+
+
+\vspace{3cm}
+\textbf{Results and Derivations:}\\
+For a signal $x[n] = \sum_{k=0}^{N-1}a_ke^{j\brak{\frac{2kn\pi}{N}}}$, defining $X[k] = Na_k$.
+\begin{align}
+x[n] &= \frac{1}{N}\sum_{k=0}^{N-1}X[k]e^{j\brak{\frac{2kn\pi}{N}}}\\
+\sum_{n=0}^{N-1}x[n]e^{-j\brak{\frac{2rn\pi}{N}}} &= \sum_{n=0}^{N-1}\frac{1}{N}\sum_{k=0}^{N-1}X[k]e^{j\brak{\frac{2kn\pi}{N}}}e^{-j\brak{\frac{2rn\pi}{N}}}\\
+&= \sum_{k=0}^{N-1}X[k]\sum_{n=0}^{N-1}\frac{1}{N}e^{j\brak{\frac{2\brak{k-r}n\pi}{N}}}\\
+\sum_{n=0}^{N-1}\frac{1}{N}e^{j\brak{\frac{2\brak{k-r}n\pi}{N}}}&=\begin{cases}
+1 & k-r=mN, m \in \mathbb{Z}\\
+0 & \text{ otherwise}
+\end{cases}\\
+\implies X[k] &= \sum_{n=0}^{N-1}x[n]e^{-j\brak{\frac{2kn\pi}{N}}} \label{X[k]_F_coeff}
+\end{align}
+If $x[n] = x[n+rN],r \in \mathbb{Z}$, from \eqref{X[k]_F_coeff},
+\begin{align}
+X[k+rN] &= \sum_{n=0}^{N-1}x[n]e^{-j\brak{\frac{2\brak{k+rN}n\pi}{N}}}\\
+&= \sum_{n=0}^{N-1}x[n]e^{-j\brak{\frac{2kn\pi}{N}}}e^{-j\brak{2rn\pi}}\\
+&= \sum_{n=0}^{N-1}x[n]e^{-j\brak{\frac{2kn\pi}{N}}}\\
+&= X[k]\\
+\implies a_k &= a_{k+rN},r \in \mathbb{Z} \label{a_k=a_{k+rN}}
+\end{align}
+\textbf{Question:} The discrete time Fourier series representation of a signal $x[n]$ with period $N$ is written as  $x[n]=\sum_{k=0}^{N-1}a_ke^{j\brak{2kn\pi/N}}$ . A discrete time periodic signal with period $N=3$, has the non-zero Fourier series coefficients: $a_{-3}=2$ and $a_4=1$. The signal is
+\begin{enumerate}[label=(\Alph*)]
+\item $2+2e^{-\brak{j\frac{2\pi}{6}n}}\cos{\brak{\frac{2\pi}{6}n}}$
+\item $1+2e^{\brak{j\frac{2\pi}{6}n}}\cos{\brak{\frac{2\pi}{6}n}}$
+\item $1+2e^{\brak{j\frac{2\pi}{3}n}}\cos{\brak{\frac{2\pi}{6}n}}$
+\item $2+2e^{\brak{j\frac{2\pi}{6}n}}\cos{\brak{\frac{2\pi}{6}n}}$
+\end{enumerate}
+\hfill(GATE EE 2022)
+\\
+\solution
+%\fi
+\begin{table}[htbp]
+	\centering
+	\def\arraystretch{1.5}
+	\input{tables/tab_ee_49_22.tex}
+	\caption{Parameters}
+	\label{tab:parameters_ee_49}
+\end{table}
+
+\begin{align}
+x[n] &= \sum_{k=0}^{N-1}a_ke^{j\brak{2kn\pi/N}}\\
+&= a_{0} + a_{1}e^{j\frac{2\pi}{3}n}  \\
+%\end{align}
+\notag \text{From \eqref{a_k=a_{k+rN}},}\\
+%\begin{align}
+a_0 &= a_{-3}\\
+a_1 &= a_4 \\
+x[n]&= 2 + e^{j\frac{2\pi}{3}n}\\
+&= 1+1+e^{j\frac{2\pi}{3}n}\\
+&= 1+e^{j\frac{2\pi}{6}n}e^{-j\frac{2\pi}{6}n}+e^{j\frac{2\pi}{6}n}e^{j\frac{2\pi}{6}n}\\
+&= 1+2e^{j\frac{2\pi}{6}n}\brak{\frac{e^{j\frac{2\pi}{6}n}+e^{-j\frac{2\pi}{6}n}}{2}} \\
+&= 1+2e^{j\frac{2\pi}{6}n}\cos{\brak{\frac{2\pi}{6}n}}
+\end{align}
+\begin{figure}[htbp]
+	\includegraphics[width=\columnwidth]{figs/plot.png}
+	\caption{Stem Plot of $x[n]$}
+	\label{fig:plot_ee49}
+\end{figure}
+\end{document}

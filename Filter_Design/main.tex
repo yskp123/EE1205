@@ -214,7 +214,7 @@ As there is one to one correspondence between the filters so $\Omega=\Omega_{p1}
     \abs{H_{a,BP}(j\Omega_{p1})} &= 1 \\
     G_{BP}\abs{H_{a,LP}(s_L)} &= 1 \label{eq:res2}
 \end{align}
-Substituting \eqref{eq:res1} in \eqref{eq:res2} we obtain Gain of required bass pass filter:
+Substituting \eqref{eq:res1} in \eqref{eq:res2} we obtain Gain of required band pass filter:
 \begin{align}
     G_{BP} &= 1.0771 
 \end{align}
@@ -334,17 +334,17 @@ Therefore the desired impulse response is :
 \end{figure}
 
 \subsection{The Equivalent Band Pass Filter}
-A Band-Pass Filter (BPF) can be obtained by subtracting the magnitude response of a Low-Pass Filter (LPF) with cutoff frequency $\omega_{p1}$ from another LPF magnitude response with cutoff frequency $\omega_{p2}$.
+A Band-Pass Filter (BPF) can be obtained by subtracting the magnitude response of a Low-Pass Filter (LPF) with cutoff frequency $\omega_{p2}$ from another LPF magnitude response with cutoff frequency $\omega_{p1}$.
 
 \begin{align}
     h_{BP}\brak{n} = 
 \begin{cases} 
-    \frac{\sin(w_{p2} n)}{n\pi} -\frac{\sin\brak{\omega_{p1}n}}{n\pi},  & \text{for } n\neq 0\\\
-    \frac{\omega_{p2}-\omega_{p1}}{\pi} &\text{for } n= 0
+    \frac{\sin(\omega_{p1} n)}{n\pi} -\frac{\sin\brak{\omega_{p2}n}}{n\pi},  & \text{for } n\neq 0\\\
+    \frac{\omega_{p1}-\omega_{p2}}{\pi} &\text{for } n= 0
 \end{cases} \label{eq:h(n)desired_for_LPF}
 \end{align}
 \begin{align}
-     \frac{\sin(\omega_{p2} n)}{n\pi} -\frac{\sin\brak{\omega_{p1}n}}{n\pi} &= 2\cos{\brak{\frac{\omega_{p2}n+\omega_{p1}n}{2}}}\sin{\brak{\frac{\omega_{p2}n-\omega_{p1}n}{2}}}\\
+     \frac{\sin(\omega_{p1} n)}{n\pi} -\frac{\sin\brak{\omega_{p2}n}}{n\pi} &= \frac{2\cos{\brak{\frac{\omega_{p1}n+\omega_{p2}n}{2}}}\sin{\brak{\frac{\omega_{p1}n-\omega_{p2}n}{2}}}}{n\pi}\\
             &= \frac{2\cos{\brak{0.292n\pi}}\sin{\brak{0.025n\pi}}}{n\pi}
 \end{align}
 Multipying by window function we get :
